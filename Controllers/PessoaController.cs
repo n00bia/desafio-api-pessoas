@@ -18,7 +18,7 @@ namespace Api_Pessoas.Controllers
         }
         [Authorize]
         [HttpGet]
-        public IActionResult ObterTodas()
+        public IActionResult GetAll()
         {
             var pessoas = _pessoaService.GetAll();
 
@@ -26,7 +26,7 @@ namespace Api_Pessoas.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult ObterPorId(int id)
+        public IActionResult GetById(int id)
         {
             var pessoa = _pessoaService.GetById(id);
 
@@ -48,12 +48,12 @@ namespace Api_Pessoas.Controllers
         }
 
         [HttpPost]
-        public IActionResult Adicionar(Pessoa pessoa)
+        public IActionResult Add(Pessoa pessoa)
         {
             try
             {
                 var novaPessoa = _pessoaService.Add(pessoa);
-                return CreatedAtAction(nameof(ObterPorId), new { id = novaPessoa.Id }, novaPessoa);
+                return CreatedAtAction(nameof(GetById), new { id = novaPessoa.Id }, novaPessoa);
             }
             catch (ArgumentException ex)
             {               
@@ -66,7 +66,7 @@ namespace Api_Pessoas.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public IActionResult Atualizar(int id, Pessoa pessoa)
+        public IActionResult Update(int id, Pessoa pessoa)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace Api_Pessoas.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult Remover(int id)
+        public IActionResult Delete(int id)
         {
             var removida = _pessoaService.DeleteById(id);
 
