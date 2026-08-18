@@ -39,10 +39,7 @@ namespace Api_Pessoas.Controllers
         [HttpGet("uf/{uf}")]
         public IActionResult GetByUf(string uf)
         {
-            var pessoas = _pessoaService.GetByUf(uf.ToUpperInvariant());
-
-            if (!pessoas.Any())
-                return NotFound();
+            var pessoas = _pessoaService.GetByUf(uf);           
 
             return Ok(pessoas);
         }
