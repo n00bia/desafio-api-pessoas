@@ -41,9 +41,16 @@ builder.Services.AddSwaggerGen(options =>
 });
 builder.Services.AddSingleton<IPessoaService, PessoaService>();
 
-var key = Encoding.UTF8.GetBytes(
-    "minha-chave-secreta-super-segura-123456"
-);
+var jwtKey = builder.Configuration["Jwt:Key"];
+
+if (string.IsNullOrWhiteSpace(jwtKey))
+{
+    throw new InvalidOperationException(
+        "A chave JWT não foi configurada."
+    );
+}
+
+var key = Encoding.UTF8.GetBytes(jwtKey);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
