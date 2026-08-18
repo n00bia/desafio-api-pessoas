@@ -25,6 +25,6 @@ Clone o repositório:
 ```bash
 git clone https://github.com/n00bia/desafio-api-pessoas.git
 ```
-Abra o projeto no Visual Studio e execute. A API deverá abrir uma documentação Swagger que você pode utilizar para listar, inserir, atualizar e excluir pessoas. Clique no botão Authorize e utilize o usuário e senha admin:admin na autenticação JWT.
+Abra o projeto no Visual Studio e execute. A API deverá abrir uma documentação Swagger que você pode utilizar para listar, inserir, atualizar e excluir pessoas. Realize o login utilizando o usuário e senha admin:admin. Copie o token gerado, clique no botão Authorize, informe o token realize a autenticação JWT.
 
 
