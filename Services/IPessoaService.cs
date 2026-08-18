@@ -8,7 +8,7 @@ namespace Api_Pessoas.Services
         Pessoa? GetById(int id);
         IEnumerable<Pessoa> GetByUf(string uf);
         Pessoa Add(Pessoa pessoa);
-        Pessoa Update(int id, Pessoa pessoa);
+        Pessoa? Update(int id, Pessoa pessoa);
         bool DeleteById(int id);
     }
 }
