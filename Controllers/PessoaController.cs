@@ -16,7 +16,7 @@ namespace Api_Pessoas.Controllers
         {
             _pessoaService = pessoaService;
         }
-        [Authorize]
+        
         [HttpGet]
         public IActionResult GetAll()
         {
