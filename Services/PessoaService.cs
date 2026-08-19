@@ -129,9 +129,10 @@ namespace Api_Pessoas.Services
             if (!ValidarCpf(pessoa.Cpf))
                 throw new ArgumentException("O CPF informado é inválido.");
 
-            pessoa.Cpf = new string(
-                pessoa.Cpf.Where(char.IsDigit).ToArray()
-            );
+            pessoa.Cpf = new string(pessoa.Cpf.Where(char.IsDigit).ToArray());
+
+            if (_pessoas.Any(p =>  new string(p.Cpf!.Where(char.IsDigit).ToArray()) == pessoa.Cpf))            
+                throw new ArgumentException("Já existe uma pessoa cadastrada com este CPF.");            
 
             if (string.IsNullOrWhiteSpace(pessoa.Uf))
                 throw new ArgumentException("A UF é obrigatória.");
